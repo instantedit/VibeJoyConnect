@@ -65,11 +65,11 @@ export interface IStorage {
   createMessage(message: InsertMessage): Promise<Message>;
   markMessagesAsRead(senderId: string, receiverId: string): Promise<void>;
 
-  sessionStore: session.SessionStore;
+  sessionStore: session.Store;
 }
 
 export class DatabaseStorage implements IStorage {
-  sessionStore: session.SessionStore;
+  sessionStore: session.Store;
 
   constructor() {
     this.sessionStore = new PostgresSessionStore({ pool, createTableIfMissing: true });
@@ -332,20 +332,16 @@ export class DatabaseStorage implements IStorage {
 
   // Message methods
   async getMessagesBetweenUsers(user1Id: string, user2Id: string, jobId?: string): Promise<Message[]> {
+    const baseConditions = or(
+      and(eq(messages.senderId, user1Id), eq(messages.receiverId, user2Id)),
+      and(eq(messages.senderId, user2Id), eq(messages.receiverId, user1Id))
+    );
+
     let query = db
       .select()
       .from(messages)
-      .where(
-        or(
-          and(eq(messages.senderId, user1Id), eq(messages.receiverId, user2Id)),
-          and(eq(messages.senderId, user2Id), eq(messages.receiverId, user1Id))
-        )
-      )
+      .where(jobId ? and(baseConditions, eq(messages.jobId, jobId)) : baseConditions)
       .orderBy(asc(messages.createdAt));
-
-    if (jobId) {
-      query = query.where(eq(messages.jobId, jobId));
-    }
 
     return await query;
   }
