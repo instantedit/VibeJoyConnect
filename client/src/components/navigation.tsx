@@ -9,7 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Brain, Menu, User, LogOut, Settings, Briefcase, Users } from "lucide-react";
+import { Brain, Menu, User, LogOut, Settings, Briefcase, Users, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 export function Navigation() {
@@ -19,6 +19,13 @@ export function Navigation() {
 
   const handleLogout = () => {
     logoutMutation.mutate();
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   return (
@@ -44,6 +51,37 @@ export function Navigation() {
             <Link href="/freelancers" className={`transition-colors ${location === '/freelancers' ? 'text-primary' : 'text-foreground hover:text-primary'}`} data-testid="nav-freelancers">
               Find Talent
             </Link>
+            
+            {/* Section Navigation - only show on homepage */}
+            {location === '/' && (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="text-foreground hover:text-primary transition-colors" data-testid="nav-sections">
+                    Sections <ChevronDown className="ml-1 h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="center">
+                  <DropdownMenuItem onClick={() => scrollToSection('hero')} data-testid="nav-section-hero">
+                    Home
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => scrollToSection('features')} data-testid="nav-section-features">
+                    Features
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => scrollToSection('how-it-works')} data-testid="nav-section-how-it-works">
+                    How it Works
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => scrollToSection('featured-jobs')} data-testid="nav-section-featured-jobs">
+                    Featured Jobs
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => scrollToSection('top-freelancers')} data-testid="nav-section-top-freelancers">
+                    Top Freelancers
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => scrollToSection('get-started')} data-testid="nav-section-get-started">
+                    Get Started
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
             
             {user ? (
               <div className="flex items-center space-x-4">
@@ -115,6 +153,33 @@ export function Navigation() {
               <Link href="/freelancers" className="block text-foreground hover:text-primary transition-colors" data-testid="mobile-nav-freelancers">
                 Find Talent
               </Link>
+              
+              {/* Mobile Section Navigation - only show on homepage */}
+              {location === '/' && (
+                <>
+                  <div className="border-t border-border pt-4 mt-4">
+                    <div className="text-sm font-medium text-muted-foreground mb-2">Jump to Section</div>
+                    <button onClick={() => scrollToSection('hero')} className="block w-full text-left text-foreground hover:text-primary transition-colors py-1" data-testid="mobile-nav-section-hero">
+                      Home
+                    </button>
+                    <button onClick={() => scrollToSection('features')} className="block w-full text-left text-foreground hover:text-primary transition-colors py-1" data-testid="mobile-nav-section-features">
+                      Features
+                    </button>
+                    <button onClick={() => scrollToSection('how-it-works')} className="block w-full text-left text-foreground hover:text-primary transition-colors py-1" data-testid="mobile-nav-section-how-it-works">
+                      How it Works
+                    </button>
+                    <button onClick={() => scrollToSection('featured-jobs')} className="block w-full text-left text-foreground hover:text-primary transition-colors py-1" data-testid="mobile-nav-section-featured-jobs">
+                      Featured Jobs
+                    </button>
+                    <button onClick={() => scrollToSection('top-freelancers')} className="block w-full text-left text-foreground hover:text-primary transition-colors py-1" data-testid="mobile-nav-section-top-freelancers">
+                      Top Freelancers
+                    </button>
+                    <button onClick={() => scrollToSection('get-started')} className="block w-full text-left text-foreground hover:text-primary transition-colors py-1" data-testid="mobile-nav-section-get-started">
+                      Get Started
+                    </button>
+                  </div>
+                </>
+              )}
               
               {user ? (
                 <>
