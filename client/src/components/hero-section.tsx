@@ -2,21 +2,47 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Search, Briefcase, Sparkles } from "lucide-react";
 import UnicornScene from "unicornstudio-react";
+import { useState, useEffect } from "react";
 
 export function HeroSection() {
+  const [unicornLoaded, setUnicornLoaded] = useState(false);
+  const [unicornError, setUnicornError] = useState(false);
+
+  useEffect(() => {
+    // Check if Unicorn Studio loaded successfully after a delay
+    const timer = setTimeout(() => {
+      const unicornElement = document.querySelector('[data-us-project]');
+      if (unicornElement && !unicornElement.querySelector('[aria-label*="Error"]')) {
+        setUnicornLoaded(true);
+      } else {
+        setUnicornError(true);
+      }
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section className="relative overflow-hidden" data-testid="hero-section">
+      {/* Fallback Gradient Background */}
+      <div className={`absolute inset-0 bg-gradient-to-br from-purple-600/20 via-blue-600/20 to-teal-500/20 transition-opacity duration-1000 ${unicornLoaded ? 'opacity-0' : 'opacity-100'}`} />
+      
       {/* Unicorn Studio Background */}
-      <UnicornScene
-        projectId="sCnguT8jcI9K7ENQmcm4"
-        width="100vw"
-        height="100vh"
-        scale={1}
-        dpi={1.5}
-        lazyLoad={false}
-        className="absolute inset-0 -z-10"
-        altText="Interactive WebGL background"
-      />
+      <div className={`absolute inset-0 transition-opacity duration-1000 ${unicornError ? 'opacity-0' : 'opacity-100'}`}>
+        <div className="w-full h-full [&_p]:hidden [&_div[aria-label*='Error']]:hidden [&_*[role='alert']]:hidden">
+          <UnicornScene
+            projectId="sCnguT8jcI9K7ENQmcm4?production=true"
+            width="100vw"
+            height="100vh"
+            scale={0.8}
+            dpi={1}
+            fps={30}
+            lazyLoad={false}
+            className="w-full h-full"
+            altText="Interactive WebGL background"
+          />
+        </div>
+      </div>
       
       {/* Content Overlay */}
       <div className="relative z-10 bg-black/20 backdrop-blur-[1px]">
