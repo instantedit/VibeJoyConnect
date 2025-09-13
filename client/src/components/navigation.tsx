@@ -9,7 +9,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Brain, Menu, User, LogOut, Settings, Briefcase, Users } from "lucide-react";
+import vibeJoyLogo from "@/assets/htw-vibejoy-logo.png";
+import { Menu, User, LogOut, Settings, Briefcase, Users } from "lucide-react";
 import { useState } from "react";
 
 export function Navigation() {
@@ -22,46 +23,71 @@ export function Navigation() {
   };
 
   return (
-    <nav className="bg-white/95 backdrop-blur-sm border-b border-border sticky top-0 z-50" data-testid="main-navigation">
+    <nav
+      className="bg-white/95 backdrop-blur-sm border-b border-border sticky top-0 z-50"
+      data-testid="main-navigation"
+    >
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3" data-testid="logo-link">
-            <div className="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center">
-              <Brain className="text-white text-lg" />
-            </div>
-            <h1 className="text-2xl font-bold text-primary">VibeJoy</h1>
-            <span className="bg-accent px-2 py-1 rounded-full text-xs font-medium text-accent-foreground">
-              AI-Powered
-            </span>
+          <Link
+            href="/"
+            className="flex items-center space-x-3"
+            data-testid="logo-link"
+          >
+            <img src={vibeJoyLogo} alt="VibeJoy Logo" className="h-16" />
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/jobs" className={`transition-colors ${location === '/jobs' ? 'text-primary' : 'text-foreground hover:text-primary'}`} data-testid="nav-jobs">
+            <Link
+              href="/jobs"
+              className={`transition-colors ${
+                location === "/jobs"
+                  ? "text-primary"
+                  : "text-foreground hover:text-primary"
+              }`}
+              data-testid="nav-jobs"
+            >
               Find Jobs
             </Link>
-            <Link href="/freelancers" className={`transition-colors ${location === '/freelancers' ? 'text-primary' : 'text-foreground hover:text-primary'}`} data-testid="nav-freelancers">
+            <Link
+              href="/freelancers"
+              className={`transition-colors ${
+                location === "/freelancers"
+                  ? "text-primary"
+                  : "text-foreground hover:text-primary"
+              }`}
+              data-testid="nav-freelancers"
+            >
               Find Talent
             </Link>
-            
+
             {user ? (
               <div className="flex items-center space-x-4">
-                {user.userType === 'employer' && (
+                {user.userType === "employer" && (
                   <Link href="/post-job" data-testid="nav-post-job">
                     <Button className="bg-primary text-primary-foreground hover:opacity-90">
                       Post a Job
                     </Button>
                   </Link>
                 )}
-                
+
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild data-testid="user-menu-trigger">
-                    <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+                    <Button
+                      variant="ghost"
+                      className="relative h-10 w-10 rounded-full"
+                    >
                       <Avatar className="h-10 w-10">
-                        <AvatarImage src={user.profileImage || undefined} alt={user.username} />
+                        <AvatarImage
+                          src={user.profileImage || undefined}
+                          alt={user.username}
+                        />
                         <AvatarFallback>
-                          {user.firstName ? user.firstName[0] : user.username[0].toUpperCase()}
+                          {user.firstName
+                            ? user.firstName[0]
+                            : user.username[0].toUpperCase()}
                         </AvatarFallback>
                       </Avatar>
                     </Button>
@@ -74,7 +100,10 @@ export function Navigation() {
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={handleLogout} data-testid="nav-logout">
+                    <DropdownMenuItem
+                      onClick={handleLogout}
+                      data-testid="nav-logout"
+                    >
                       <LogOut className="mr-2 h-4 w-4" />
                       Sign Out
                     </DropdownMenuItem>
@@ -83,7 +112,11 @@ export function Navigation() {
               </div>
             ) : (
               <div className="flex items-center space-x-4">
-                <Link href="/auth" className="text-muted-foreground hover:text-primary transition-colors" data-testid="nav-signin">
+                <Link
+                  href="/auth"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                  data-testid="nav-signin"
+                >
                   Sign In
                 </Link>
                 <Link href="/auth" data-testid="nav-signup">
@@ -96,7 +129,7 @@ export function Navigation() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="md:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             data-testid="mobile-menu-button"
@@ -107,26 +140,45 @@ export function Navigation() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 py-4 border-t border-border" data-testid="mobile-menu">
+          <div
+            className="md:hidden mt-4 py-4 border-t border-border"
+            data-testid="mobile-menu"
+          >
             <div className="space-y-4">
-              <Link href="/jobs" className="block text-foreground hover:text-primary transition-colors" data-testid="mobile-nav-jobs">
+              <Link
+                href="/jobs"
+                className="block text-foreground hover:text-primary transition-colors"
+                data-testid="mobile-nav-jobs"
+              >
                 Find Jobs
               </Link>
-              <Link href="/freelancers" className="block text-foreground hover:text-primary transition-colors" data-testid="mobile-nav-freelancers">
+              <Link
+                href="/freelancers"
+                className="block text-foreground hover:text-primary transition-colors"
+                data-testid="mobile-nav-freelancers"
+              >
                 Find Talent
               </Link>
-              
+
               {user ? (
                 <>
-                  <Link href="/dashboard" className="block text-foreground hover:text-primary transition-colors" data-testid="mobile-nav-dashboard">
+                  <Link
+                    href="/dashboard"
+                    className="block text-foreground hover:text-primary transition-colors"
+                    data-testid="mobile-nav-dashboard"
+                  >
                     Dashboard
                   </Link>
-                  {user.userType === 'employer' && (
-                    <Link href="/post-job" className="block text-foreground hover:text-primary transition-colors" data-testid="mobile-nav-post-job">
+                  {user.userType === "employer" && (
+                    <Link
+                      href="/post-job"
+                      className="block text-foreground hover:text-primary transition-colors"
+                      data-testid="mobile-nav-post-job"
+                    >
                       Post a Job
                     </Link>
                   )}
-                  <button 
+                  <button
                     onClick={handleLogout}
                     className="block w-full text-left text-foreground hover:text-primary transition-colors"
                     data-testid="mobile-nav-logout"
@@ -136,10 +188,18 @@ export function Navigation() {
                 </>
               ) : (
                 <>
-                  <Link href="/auth" className="block text-foreground hover:text-primary transition-colors" data-testid="mobile-nav-signin">
+                  <Link
+                    href="/auth"
+                    className="block text-foreground hover:text-primary transition-colors"
+                    data-testid="mobile-nav-signin"
+                  >
                     Sign In
                   </Link>
-                  <Link href="/auth" className="block text-foreground hover:text-primary transition-colors" data-testid="mobile-nav-signup">
+                  <Link
+                    href="/auth"
+                    className="block text-foreground hover:text-primary transition-colors"
+                    data-testid="mobile-nav-signup"
+                  >
                     Get Started
                   </Link>
                 </>

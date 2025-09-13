@@ -7,6 +7,17 @@ export function HeroSection() {
     <section className="relative overflow-hidden hero-gradient" data-testid="hero-section">
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="text-center max-w-4xl mx-auto">
+          <div style={{position: "absolute", top: 0, left: 0, width: "100%", height: "100%"}}>
+            <div data-us-project="B5IRUHTj0xtX0Ps24BwW" style={{width: "1440px", height: "900px"}}></div>
+            <script
+              type="text/javascript"
+              dangerouslySetInnerHTML={{
+                __html: `!function(){if(!window.UnicornStudio){window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.30/dist/unicornStudio.umd.js",i.onload=function(){window.UnicornStudio.isInitialized||(UnicornStudio.init(),window.UnicornStudio.isInitialized=!0)},(document.head || document.body).appendChild(i)}}();`
+              }}
+            ></script>
+          </div>
+
+
           <div className="inline-flex items-center bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full mb-8 border border-primary/20" data-testid="ai-badge">
             <Sparkles className="text-primary mr-2 h-4 w-4" />
             <span className="text-sm font-medium">Powered by Advanced AI Matching</span>
