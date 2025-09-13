@@ -40,6 +40,16 @@ export function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
+            <a
+              href="https://vibejoy2.replit.app/"
+              className={`transition-colors ${
+                location === "https://vibejoy2.replit.app/"
+                  ? "text-primary"
+                  : "text-foreground hover:text-primary"
+              }`}
+            >
+              Job and Bounty Board
+            </a>
             <Link
               href="/jobs"
               className={`transition-colors ${
