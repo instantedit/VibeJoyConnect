@@ -27,8 +27,8 @@ const availabilityOptions = [
 export default function FreelancersPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
-  const [minRating, setMinRating] = useState<string>("any");
-  const [availability, setAvailability] = useState<string>("any");
+  const [minRating, setMinRating] = useState<string>("");
+  const [availability, setAvailability] = useState<string>("");
 
   const { data: freelancers, isLoading, error } = useQuery<(FreelancerProfile & { user: User })[]>({
     queryKey: ["/api/freelancers", { 
@@ -54,13 +54,13 @@ export default function FreelancersPage() {
     }
 
     // Rating filter
-    if (minRating && minRating !== "any") {
+    if (minRating) {
       const rating = parseFloat(freelancer.rating || '0');
       if (rating < parseFloat(minRating)) return false;
     }
 
     // Availability filter
-    if (availability && availability !== "any" && freelancer.availability !== availability) {
+    if (availability && freelancer.availability !== availability) {
       return false;
     }
 
@@ -78,8 +78,8 @@ export default function FreelancersPage() {
   const clearFilters = () => {
     setSearchQuery("");
     setSelectedSkills([]);
-    setMinRating("any");
-    setAvailability("any");
+    setMinRating("");
+    setAvailability("");
   };
 
   return (
@@ -122,7 +122,7 @@ export default function FreelancersPage() {
                         <SelectValue placeholder="Minimum Rating" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="any" data-testid="rating-all">Any Rating</SelectItem>
+                        <SelectItem value="" data-testid="rating-all">Any Rating</SelectItem>
                         <SelectItem value="4.5" data-testid="rating-4.5">4.5+ Stars</SelectItem>
                         <SelectItem value="4.0" data-testid="rating-4.0">4.0+ Stars</SelectItem>
                         <SelectItem value="3.5" data-testid="rating-3.5">3.5+ Stars</SelectItem>
@@ -135,7 +135,7 @@ export default function FreelancersPage() {
                         <SelectValue placeholder="Availability" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="any" data-testid="availability-all">Any Status</SelectItem>
+                        <SelectItem value="" data-testid="availability-all">Any Status</SelectItem>
                         {availabilityOptions.map(option => (
                           <SelectItem key={option.value} value={option.value} data-testid={`availability-${option.value}`}>
                             {option.label}

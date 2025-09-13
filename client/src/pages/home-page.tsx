@@ -21,15 +21,11 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-background" data-testid="home-page">
       <Navigation />
-      <section id="hero">
-        <HeroSection />
-      </section>
-      <section id="features">
-        <FeaturesSection />
-      </section>
+      <HeroSection />
+      <FeaturesSection />
 
       {/* How it Works Section */}
-      <section id="how-it-works" className="py-20 bg-muted/30" data-testid="how-it-works-section">
+      <section className="py-20 bg-muted/30" data-testid="how-it-works-section">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6" data-testid="how-it-works-title">How VibeJoy Works</h2>
@@ -109,7 +105,7 @@ export default function HomePage() {
       </section>
 
       {/* Featured Jobs Section */}
-      <section id="featured-jobs" className="py-20 bg-white" data-testid="featured-jobs-section">
+      <section className="py-20 bg-white" data-testid="featured-jobs-section">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-end mb-12">
             <div>
@@ -149,7 +145,7 @@ export default function HomePage() {
       </section>
 
       {/* Top Freelancers Section */}
-      <section id="top-freelancers" className="py-20 bg-muted/30" data-testid="top-freelancers-section">
+      <section className="py-20 bg-muted/30" data-testid="top-freelancers-section">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-end mb-12">
             <div>
@@ -194,7 +190,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section id="get-started" className="py-20 bg-gradient-to-br from-primary via-primary/90 to-secondary relative overflow-hidden" data-testid="cta-section">
+      <section className="py-20 bg-gradient-to-br from-primary via-primary/90 to-secondary relative overflow-hidden" data-testid="cta-section">
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6" data-testid="cta-title">
             Ready to Transform Your <br />Work Experience?

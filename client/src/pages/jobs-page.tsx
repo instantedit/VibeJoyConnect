@@ -24,14 +24,14 @@ const skillOptions = [
 
 export default function JobsPage() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
   const [remoteOnly, setRemoteOnly] = useState<boolean | undefined>(undefined);
   const [featuredOnly, setFeaturedOnly] = useState(false);
 
   const { data: jobs, isLoading, error } = useQuery<(Job & { employer: User })[]>({
     queryKey: ["/api/jobs", { 
-      category: selectedCategory !== "all" ? selectedCategory : undefined,
+      category: selectedCategory || undefined,
       skills: selectedSkills.length > 0 ? selectedSkills.join(",") : undefined,
       remote: remoteOnly,
       featured: featuredOnly || undefined,
@@ -63,7 +63,7 @@ export default function JobsPage() {
 
   const clearFilters = () => {
     setSearchQuery("");
-    setSelectedCategory("all");
+    setSelectedCategory("");
     setSelectedSkills([]);
     setRemoteOnly(undefined);
     setFeaturedOnly(false);
@@ -109,7 +109,7 @@ export default function JobsPage() {
                         <SelectValue placeholder="Category" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="all" data-testid="category-all">All Categories</SelectItem>
+                        <SelectItem value="" data-testid="category-all">All Categories</SelectItem>
                         {categories.map(category => (
                           <SelectItem key={category} value={category} data-testid={`category-${category}`}>
                             {category}
@@ -118,12 +118,12 @@ export default function JobsPage() {
                       </SelectContent>
                     </Select>
 
-                    <Select value={remoteOnly?.toString() || "all"} onValueChange={(value) => setRemoteOnly(value === "all" ? undefined : value === "true")}>
+                    <Select value={remoteOnly?.toString() || ""} onValueChange={(value) => setRemoteOnly(value === "" ? undefined : value === "true")}>
                       <SelectTrigger data-testid="location-filter">
                         <SelectValue placeholder="Location" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="all" data-testid="location-all">All Locations</SelectItem>
+                        <SelectItem value="" data-testid="location-all">All Locations</SelectItem>
                         <SelectItem value="true" data-testid="location-remote">Remote Only</SelectItem>
                         <SelectItem value="false" data-testid="location-onsite">On-site Only</SelectItem>
                       </SelectContent>
