@@ -1,0 +1,251 @@
+Vibecoding Job Listing Board (AI-First, Replit Agent 3)
+1. Vision & Purpose
+
+The Vibecoding Job Listing Board will be an AI-driven platform where creatives, coders, and entrepreneurs discover and share jobs, gigs, and collaborations. Unlike traditional job boards, this platform emphasizes “vibes over resumes” — personality, energy, and cultural fit matter as much as skills.
+
+AI will power:
+
+Automated job postings (from employers, freelancers, or AI agents scraping open roles).
+
+Personalized vibe-based matching between candidates and roles.
+
+Conversational interfaces for applicants and employers (AI agents assist in creating listings, writing applications, or scheduling interviews).
+
+A fully automated coding + deployment workflow using Replit Agent 3, ensuring fast, iterative product evolution.
+
+2. Core Features
+2.1 Job Listings
+
+Create Job Posts
+
+Employer enters minimal data (title, vibe tags, budget/rate, duration, role type).
+
+AI expands into a full listing with engaging, branded copy.
+
+Option to generate a vibe scorecard (quiz-like assessment).
+
+Vibe Tags
+
+Controlled vocabulary (e.g., chill, fast-paced, experimental, collaborative, remote-friendly).
+
+AI auto-assigns vibe tags from text input.
+
+AI-Curated Imports
+
+Agents crawl APIs (e.g., LinkedIn, AngelList) to pull jobs aligned with vibe filters.
+
+2.2 Candidate Experience
+
+AI Profile Generation
+
+User answers a fun vibe quiz. AI generates a profile with:
+
+Skills matrix
+
+Vibe alignment score
+
+Portfolio summary (linked to GitHub, Replit, Behance, etc.)
+
+AI Application Drafts
+
+Candidates click Apply, and AI generates:
+
+Custom intro message aligned with job’s vibe.
+
+Short form “vibe resume” (one-page, conversational).
+
+Matchmaking Feed
+
+TikTok-style swiping UI for job matches (emphasizing speed and emotional response).
+
+2.3 Employer Experience
+
+One-Click Job Creation
+
+Fill a short form → AI writes posting.
+
+Smart Matching
+
+Ranked list of candidates based on skills + vibe score.
+
+AI Interview Assistant
+
+Replit Agent generates suggested interview questions.
+
+Option to host AI-moderated video screening calls.
+
+2.4 Platform Features
+
+Gamification
+
+Candidates and employers earn “Vibe Points” for activity (posting, applying, matching).
+
+Points can unlock featured listings or profile boosts.
+
+Chatbot Interface
+
+Site accessible via conversational interface (“Find me remote creative coding jobs with playful vibes”).
+
+Community Layer
+
+Discussion forum for posting projects, vibe memes, and side hustles.
+
+3. Technical Architecture
+3.1 Frontend
+
+Framework: Next.js + TailwindCSS
+
+UI: Relume Library (React Components) + custom Vibe-UI system
+
+Features:
+
+Infinite scroll job feed
+
+Swipeable mobile view
+
+Dynamic vibe tag chips
+
+3.2 Backend
+
+Supabase for auth, DB, and file storage
+
+Postgres Schema
+
+Tables: users, jobs, applications, vibe_tags, matches, points
+
+AI Orchestration
+
+Replit Agent 3 for building/iterating features automatically from PRDs or prompts
+
+OpenAI GPT-5 / fine-tuned vibe model for text generation & vibe scoring
+
+3.3 Integrations
+
+OAuth: GitHub, Google, LinkedIn
+
+Payments: Stripe (for boosted listings, featured candidates)
+
+Notifications: Resend (email), Twilio (SMS), WhatsApp
+
+4. AI Workflows (Vibecoding)
+4.1 AI Job Post Generator
+
+Employer enters: title, budget, vibe.
+
+AI outputs:
+
+Rich description
+
+Auto-generated vibe tags
+
+Salary benchmarking
+
+4.2 AI Vibe Quiz → Profile
+
+Candidate answers quiz.
+
+AI generates:
+
+Vibe persona (e.g., “Chill Creator,” “Hustle Coder”).
+
+Skill summary + vibe tags.
+
+Suggested portfolio tagline.
+
+4.3 AI Matching Agent
+
+Uses embeddings (skills + vibes).
+
+Produces compatibility scores for candidates and roles.
+
+4.4 AI Interview Assistant
+
+Generates tailored questions.
+
+Suggests follow-up discussion points.
+
+Optionally runs AI-moderated async Q&A.
+
+5. Replit Agent 3 Usage
+
+Auto-development cycle
+
+PRDs like this fed directly into Replit Agent 3.
+
+Agent builds codebase, tests, and deploys.
+
+Self-healing features
+
+Agents monitor for bugs, generate patches.
+
+Iterative deployment
+
+Connect with Vercel for continuous deploy.
+
+6. Success Metrics
+
+User KPIs
+
+DAUs, MAUs
+
+Job posts created per week
+
+Application completion rate
+
+Engagement KPIs
+
+Swipe interactions
+
+Average vibe match score
+
+Vibe quiz completions
+
+Business KPIs
+
+Paid listings conversion
+
+Candidate boosts purchased
+
+Time-to-hire reduced
+
+7. Roadmap (90-Day MVP)
+
+Phase 1 (Weeks 1-3)
+
+Core DB schema
+
+AI Job Post Generator
+
+AI Vibe Quiz + Profile
+
+Phase 2 (Weeks 4-8)
+
+Swipeable job feed
+
+AI Matching Algorithm v1
+
+Stripe payments
+
+Phase 3 (Weeks 9-12)
+
+AI Interview Assistant (text-based)
+
+Gamification layer
+
+Community forum
+
+Phase 4 (Weeks 12-13)
+
+Launch beta with curated early adopters
+
+Collect feedback, refine vibes
+
+8. Future Opportunities
+
+AI voice/video interview bots
+
+DAO-style governance of vibe tags
+
+On-chain reputation system
+
+Integration with InstantEdit & SpeedLead funnels

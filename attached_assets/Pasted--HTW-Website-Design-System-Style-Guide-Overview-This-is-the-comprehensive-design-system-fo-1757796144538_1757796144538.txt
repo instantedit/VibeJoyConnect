@@ -1,0 +1,101 @@
+# HTW Website Design System & Style Guide
+
+## Overview
+This is the comprehensive design system for the Honolulu Tech Week (HTW) website. Use this guide to maintain consistency across all pages and components.
+
+## Color Palette
+
+### Primary Colors
+```css
+/* HTW Brand Colors */
+--htw-primary: #00D4FF        /* Bright cyan - primary brand color */
+--htw-deep-sea: #003366       /* Dark navy blue - headings & text */
+--htw-tech-blue: #1E40AF      /* Medium blue - backgrounds & accents */
+```
+
+### Text Colors
+```css
+/* Light Backgrounds */
+--text-headings: text-htw-deep-sea     /* #003366 - Main headings */
+--text-body: text-gray-700             /* Body text */
+--text-secondary: text-gray-600        /* Secondary text */
+--text-accent: text-htw-primary        /* #00D4FF - Links & accents */
+
+/* Dark Backgrounds */
+--text-headings-dark: text-white       /* White headings on dark */
+--text-body-dark: text-white/90        /* 90% opacity white */
+--text-secondary-dark: text-white/80   /* 80% opacity white */
+--text-accent-dark: text-htw-primary   /* Cyan accent on dark */
+```
+
+### Background Colors
+```css
+--bg-primary: bg-white
+--bg-secondary: bg-gray-50
+--bg-dark: bg-htw-deep-sea
+--bg-tech: bg-htw-tech-blue
+--bg-accent: bg-htw-primary
+--bg-gradient: bg-gradient-to-br from-htw-deep-sea via-htw-tech-blue to-htw-deep-sea
+```
+
+## Typography
+
+### Font Families
+```css
+/* Primary Font Stack */
+font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+/* Condensed Headlines */
+font-family: 'IBM Plex Sans Condensed', 'Geist', sans-serif;
+font-class: font-ibm-condensed
+```
+
+### Font Size Hierarchy
+```css
+/* Hero Headlines */
+.hero-headline {
+  @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-ibm-condensed;
+}
+
+/* Section Headlines */
+.section-headline {
+  @apply text-2xl md:text-3xl lg:text-4xl font-black font-ibm-condensed;
+}
+
+/* Card Titles - Feature */
+.card-title-feature {
+  @apply text-lg font-bold;
+}
+
+/* Card Titles - Compact */
+.card-title-compact {
+  @apply text-base font-bold;
+}
+
+/* Body Text - Primary */
+.body-primary {
+  @apply text-lg leading-relaxed;
+}
+
+/* Body Text - Secondary */
+.body-secondary {
+  @apply text-base leading-relaxed;
+}
+
+/* Captions */
+.caption {
+  @apply text-sm;
+}
+
+/* Fine Print */
+.fine-print {
+  @apply text-xs;
+}
+```
+
+### Font Weights
+```css
+--font-light: font-light     /* 300 */
+--font-normal: font-normal   /* 400 */
+--font-medium: font-medium   /* 500 */
+... (450 lines left)
