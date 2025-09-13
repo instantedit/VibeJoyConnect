@@ -1,11 +1,26 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Search, Briefcase, Sparkles } from "lucide-react";
+import UnicornScene from "unicornstudio-react";
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden hero-gradient" data-testid="hero-section">
-      <div className="max-w-7xl mx-auto px-6 py-20">
+    <section className="relative overflow-hidden" data-testid="hero-section">
+      {/* Unicorn Studio Background */}
+      <UnicornScene
+        projectId="sCnguT8jcI9K7ENQmcm4"
+        width="100vw"
+        height="100vh"
+        scale={1}
+        dpi={1.5}
+        lazyLoad={false}
+        className="absolute inset-0 -z-10"
+        altText="Interactive WebGL background"
+      />
+      
+      {/* Content Overlay */}
+      <div className="relative z-10 bg-black/20 backdrop-blur-[1px]">
+        <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="text-center max-w-4xl mx-auto">
           <div className="inline-flex items-center bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full mb-8 border border-primary/20" data-testid="ai-badge">
             <Sparkles className="text-primary mr-2 h-4 w-4" />
@@ -59,6 +74,7 @@ export function HeroSection() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
