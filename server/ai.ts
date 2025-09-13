@@ -44,7 +44,7 @@ export async function calculateJobMatch(
       response_format: { type: "json_object" },
     });
 
-    const result = JSON.parse(response.choices[0].message.content);
+    const result = JSON.parse(response.choices[0].message.content || '{"score": 0, "reasoning": "No response"}');
     
     return {
       score: Math.max(0, Math.min(100, Math.round(result.score))),

@@ -353,7 +353,7 @@ export default function PostJobPage() {
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="remote"
-                  checked={form.watch("remote")}
+                  checked={!!form.watch("remote")}
                   onCheckedChange={(checked) => form.setValue("remote", !!checked)}
                   data-testid="checkbox-remote"
                 />
@@ -378,7 +378,7 @@ export default function PostJobPage() {
                 <div className="flex items-center space-x-2">
                   <Checkbox
                     id="featured"
-                    checked={form.watch("featured")}
+                    checked={!!form.watch("featured")}
                     onCheckedChange={(checked) => form.setValue("featured", !!checked)}
                     data-testid="checkbox-featured"
                   />
@@ -390,7 +390,7 @@ export default function PostJobPage() {
                 <div className="flex items-center space-x-2">
                   <Checkbox
                     id="urgent"
-                    checked={form.watch("urgent")}
+                    checked={!!form.watch("urgent")}
                     onCheckedChange={(checked) => form.setValue("urgent", !!checked)}
                     data-testid="checkbox-urgent"
                   />

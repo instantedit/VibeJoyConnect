@@ -55,7 +55,7 @@ export default function FreelancersPage() {
 
     // Rating filter
     if (minRating) {
-      const rating = parseFloat(freelancer.rating);
+      const rating = parseFloat(freelancer.rating || '0');
       if (rating < parseFloat(minRating)) return false;
     }
 

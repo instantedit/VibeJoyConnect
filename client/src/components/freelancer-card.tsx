@@ -71,10 +71,10 @@ export function FreelancerCard({ freelancer, showContactButton = true }: Freelan
             <div className="flex items-center space-x-4 text-sm">
               <div className="flex items-center" data-testid="freelancer-rating">
                 <div className="flex mr-2">
-                  {renderStars(freelancer.rating)}
+                  {renderStars(freelancer.rating || '0')}
                 </div>
                 <span className="text-muted-foreground">
-                  {parseFloat(freelancer.rating).toFixed(1)} ({freelancer.completedJobs} reviews)
+                  {parseFloat(freelancer.rating || '0').toFixed(1)} ({freelancer.completedJobs || 0} reviews)
                 </span>
               </div>
             </div>
@@ -87,7 +87,7 @@ export function FreelancerCard({ freelancer, showContactButton = true }: Freelan
             )}
           </div>
           
-          <Circle className={`w-3 h-3 ${getAvailabilityColor(freelancer.availability)} fill-current`} data-testid="availability-indicator" />
+          <Circle className={`w-3 h-3 ${getAvailabilityColor(freelancer.availability || 'available')} fill-current`} data-testid="availability-indicator" />
         </div>
 
         <p className="text-muted-foreground mb-4 line-clamp-3" data-testid="freelancer-bio">
@@ -121,7 +121,7 @@ export function FreelancerCard({ freelancer, showContactButton = true }: Freelan
           )}
         </div>
 
-        {freelancer.completedJobs > 0 && (
+        {(freelancer.completedJobs ?? 0) > 0 && (
           <div className="mt-3 text-sm text-muted-foreground" data-testid="completed-jobs">
             {freelancer.completedJobs} completed project{freelancer.completedJobs !== 1 ? 's' : ''}
           </div>

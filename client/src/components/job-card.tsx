@@ -123,7 +123,7 @@ export function JobCard({ job, showApplyButton = true, aiMatchScore }: JobCardPr
           </div>
         </div>
 
-        {job.applicationsCount > 0 && (
+        {(job.applicationsCount ?? 0) > 0 && (
           <div className="mt-3 text-sm text-muted-foreground" data-testid="applications-count">
             {job.applicationsCount} application{job.applicationsCount !== 1 ? 's' : ''}
           </div>

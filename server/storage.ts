@@ -53,7 +53,7 @@ export interface IStorage {
   getApplication(id: string): Promise<Application | undefined>;
   getApplicationsByJob(jobId: string): Promise<(Application & { freelancer: User; freelancerProfile: FreelancerProfile })[]>;
   getApplicationsByFreelancer(freelancerId: string): Promise<(Application & { job: Job; employer: User })[]>;
-  createApplication(application: InsertApplication): Promise<Application>;
+  createApplication(application: InsertApplication, aiMatchScore?: number): Promise<Application>;
   updateApplication(id: string, application: Partial<InsertApplication>): Promise<Application>;
 
   // Review methods
@@ -280,8 +280,11 @@ export class DatabaseStorage implements IStorage {
     }));
   }
 
-  async createApplication(application: InsertApplication): Promise<Application> {
-    const [created] = await db.insert(applications).values(application).returning();
+  async createApplication(application: InsertApplication, aiMatchScore?: number): Promise<Application> {
+    const applicationData = aiMatchScore ? 
+      { ...application, aiMatchScore: aiMatchScore.toString() } :
+      application;
+    const [created] = await db.insert(applications).values(applicationData).returning();
     
     // Update applications count
     await db

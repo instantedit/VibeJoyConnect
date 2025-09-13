@@ -17,7 +17,7 @@ if (!process.env.STRIPE_SECRET_KEY) {
 }
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: "2023-10-16",
+  apiVersion: "2025-08-27.basil",
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -243,10 +243,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         aiMatchScore = matchResult.score;
       }
 
-      const application = await storage.createApplication({
-        ...applicationData,
-        aiMatchScore: aiMatchScore.toString()
-      });
+      const application = await storage.createApplication(applicationData, aiMatchScore);
       
       res.status(201).json(application);
     } catch (error: any) {
