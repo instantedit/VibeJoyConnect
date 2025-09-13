@@ -67,7 +67,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const enhancedDescription = await enhanceJobDescription(
         jobData.title,
         jobData.description,
-        jobData.skills || [],
+        jobData.skills as string[] || [],
         jobData.category
       );
 
