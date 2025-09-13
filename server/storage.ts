@@ -154,7 +154,7 @@ export class DatabaseStorage implements IStorage {
     if (skills && skills.length > 0) {
       query = query.where(
         sql`${freelancerProfiles.skills} @> ${JSON.stringify(skills)}`
-      );
+      ) as typeof query;
     }
 
     const results = await query;
@@ -177,15 +177,7 @@ export class DatabaseStorage implements IStorage {
     featured?: boolean; 
     limit?: number 
   }): Promise<(Job & { employer: User })[]> {
-    let query = db
-      .select()
-      .from(jobs)
-      .innerJoin(users, eq(jobs.employerId, users.id))
-      .where(eq(jobs.status, "open"))
-      .orderBy(desc(jobs.featured), desc(jobs.urgent), desc(jobs.createdAt))
-      .limit(filters?.limit || 50);
-
-    const conditions = [];
+    const conditions = [eq(jobs.status, "open")];
 
     if (filters?.category) {
       conditions.push(eq(jobs.category, filters.category));
@@ -205,9 +197,13 @@ export class DatabaseStorage implements IStorage {
       );
     }
 
-    if (conditions.length > 0) {
-      query = query.where(and(...conditions));
-    }
+    const query = db
+      .select()
+      .from(jobs)
+      .innerJoin(users, eq(jobs.employerId, users.id))
+      .where(and(...conditions))
+      .orderBy(desc(jobs.featured), desc(jobs.urgent), desc(jobs.createdAt))
+      .limit(filters?.limit || 50);
 
     const results = await query;
     return results.map(result => ({

@@ -11,11 +11,11 @@ import { Twitter, Linkedin, Github, Brain } from "lucide-react";
 
 export default function HomePage() {
   const { data: featuredJobs } = useQuery<(Job & { employer: User })[]>({
-    queryKey: ["/api/jobs", "featured=true", "limit=3"],
+    queryKey: ["/api/jobs?featured=true&limit=3"],
   });
 
   const { data: topFreelancers } = useQuery<(FreelancerProfile & { user: User })[]>({
-    queryKey: ["/api/freelancers", "limit=3"],
+    queryKey: ["/api/freelancers?limit=3"],
   });
 
   return (

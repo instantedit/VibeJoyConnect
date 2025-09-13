@@ -32,7 +32,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const jobs = await storage.getJobs({
         category: category as string,
         skills: skillsArray,
-        remote: remote === "true",
+        remote: remote !== undefined ? remote === "true" : undefined,
         featured: featured === "true",
         limit: limit ? parseInt(limit as string) : 50
       });
