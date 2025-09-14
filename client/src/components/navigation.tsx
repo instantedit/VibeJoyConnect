@@ -24,7 +24,7 @@ export function Navigation() {
 
   return (
     <nav
-      className="bg-white/95 backdrop-blur-sm border-b border-border sticky top-0 z-50"
+      className="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50"
       data-testid="main-navigation"
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
@@ -42,20 +42,20 @@ export function Navigation() {
           <div className="hidden md:flex items-center space-x-8">
             <a
               href="https://vibejoy2.replit.app/"
-              className={`transition-colors ${
+              className={`transition-all duration-300 font-medium ${
                 location === "https://vibejoy2.replit.app/"
-                  ? "text-primary"
-                  : "text-foreground hover:text-primary"
+                  ? "text-htw-primary"
+                  : "text-htw-deep-sea hover:text-htw-primary"
               }`}
             >
               Job and Bounty Board
             </a>
             <Link
               href="/jobs"
-              className={`transition-colors ${
+              className={`transition-all duration-300 font-medium ${
                 location === "/jobs"
-                  ? "text-primary"
-                  : "text-foreground hover:text-primary"
+                  ? "text-htw-primary"
+                  : "text-htw-deep-sea hover:text-htw-primary"
               }`}
               data-testid="nav-jobs"
             >
@@ -63,10 +63,10 @@ export function Navigation() {
             </Link>
             <Link
               href="/freelancers"
-              className={`transition-colors ${
+              className={`transition-all duration-300 font-medium ${
                 location === "/freelancers"
-                  ? "text-primary"
-                  : "text-foreground hover:text-primary"
+                  ? "text-htw-primary"
+                  : "text-htw-deep-sea hover:text-htw-primary"
               }`}
               data-testid="nav-freelancers"
             >
@@ -77,7 +77,7 @@ export function Navigation() {
               <div className="flex items-center space-x-4">
                 {user.userType === "employer" && (
                   <Link href="/post-job" data-testid="nav-post-job">
-                    <Button className="bg-primary text-primary-foreground hover:opacity-90">
+                    <Button className="bg-htw-primary text-htw-deep-sea font-bold px-6 py-3 rounded-lg hover:bg-htw-primary/90 transition-all duration-300">
                       Post a Job
                     </Button>
                   </Link>
@@ -124,13 +124,13 @@ export function Navigation() {
               <div className="flex items-center space-x-4">
                 <Link
                   href="/auth"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-htw-deep-sea hover:text-htw-primary transition-all duration-300 font-medium"
                   data-testid="nav-signin"
                 >
                   Sign In
                 </Link>
                 <Link href="/auth" data-testid="nav-signup">
-                  <Button className="bg-primary text-primary-foreground hover:opacity-90">
+                  <Button className="bg-htw-primary text-htw-deep-sea font-bold px-6 py-3 rounded-lg hover:bg-htw-primary/90 transition-all duration-300">
                     Get Started
                   </Button>
                 </Link>
@@ -157,14 +157,14 @@ export function Navigation() {
             <div className="space-y-4">
               <Link
                 href="/jobs"
-                className="block text-foreground hover:text-primary transition-colors"
+                className="block text-htw-deep-sea hover:text-htw-primary transition-all duration-300 font-medium"
                 data-testid="mobile-nav-jobs"
               >
                 Find Jobs
               </Link>
               <Link
                 href="/freelancers"
-                className="block text-foreground hover:text-primary transition-colors"
+                className="block text-htw-deep-sea hover:text-htw-primary transition-all duration-300 font-medium"
                 data-testid="mobile-nav-freelancers"
               >
                 Find Talent
@@ -174,7 +174,7 @@ export function Navigation() {
                 <>
                   <Link
                     href="/dashboard"
-                    className="block text-foreground hover:text-primary transition-colors"
+                    className="block text-htw-deep-sea hover:text-htw-primary transition-all duration-300 font-medium"
                     data-testid="mobile-nav-dashboard"
                   >
                     Dashboard
@@ -182,7 +182,7 @@ export function Navigation() {
                   {user.userType === "employer" && (
                     <Link
                       href="/post-job"
-                      className="block text-foreground hover:text-primary transition-colors"
+                      className="block text-htw-deep-sea hover:text-htw-primary transition-all duration-300 font-medium"
                       data-testid="mobile-nav-post-job"
                     >
                       Post a Job
@@ -190,7 +190,7 @@ export function Navigation() {
                   )}
                   <button
                     onClick={handleLogout}
-                    className="block w-full text-left text-foreground hover:text-primary transition-colors"
+                    className="block w-full text-left text-htw-deep-sea hover:text-htw-primary transition-all duration-300 font-medium"
                     data-testid="mobile-nav-logout"
                   >
                     Sign Out
@@ -200,14 +200,14 @@ export function Navigation() {
                 <>
                   <Link
                     href="/auth"
-                    className="block text-foreground hover:text-primary transition-colors"
+                    className="block text-htw-deep-sea hover:text-htw-primary transition-all duration-300 font-medium"
                     data-testid="mobile-nav-signin"
                   >
                     Sign In
                   </Link>
                   <Link
                     href="/auth"
-                    className="block text-foreground hover:text-primary transition-colors"
+                    className="block text-htw-deep-sea hover:text-htw-primary transition-all duration-300 font-medium"
                     data-testid="mobile-nav-signup"
                   >
                     Get Started

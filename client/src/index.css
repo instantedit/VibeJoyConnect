@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=IBM+Plex+Sans+Condensed:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -129,4 +129,102 @@
 
 .hero-gradient {
   background: linear-gradient(to bottom right, hsl(239, 84%, 67%, 0.05), hsl(159, 61%, 41%, 0.05), hsl(43, 96%, 56%, 0.05));
+}
+
+/* HTW Design System Utilities */
+
+/* Typography Classes */
+@layer utilities {
+  .hero-headline {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-ibm-condensed text-htw-deep-sea;
+  }
+
+  .section-headline {
+    @apply text-2xl md:text-3xl lg:text-4xl font-black font-ibm-condensed text-htw-deep-sea;
+  }
+
+  .card-title-feature {
+    @apply text-lg font-bold text-htw-deep-sea;
+  }
+
+  .card-title-compact {
+    @apply text-base font-bold text-htw-deep-sea;
+  }
+
+  .body-primary {
+    @apply text-lg leading-relaxed text-gray-700;
+  }
+
+  .body-secondary {
+    @apply text-base leading-relaxed text-gray-700;
+  }
+
+  .caption {
+    @apply text-sm text-gray-600;
+  }
+
+  .fine-print {
+    @apply text-xs text-gray-500;
+  }
+}
+
+/* Button Classes */
+@layer components {
+  .btn-primary {
+    @apply bg-htw-primary text-htw-deep-sea font-bold px-6 py-3 rounded-lg
+           hover:bg-htw-primary/90 transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border-2 border-htw-primary text-htw-primary
+           hover:bg-htw-primary hover:text-htw-deep-sea transition-all duration-300;
+  }
+
+  .btn-hover {
+    @apply hover:scale-105 transition-all duration-300;
+  }
+}
+
+/* Card Classes */
+@layer components {
+  .card-standard {
+    @apply bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden;
+  }
+
+  .card-hover {
+    @apply hover:shadow-xl hover:-translate-y-2 transition-all duration-500;
+  }
+}
+
+/* Container Classes */
+@layer components {
+  .container-standard {
+    @apply container mx-auto px-4 sm:px-6;
+  }
+
+  .container-narrow {
+    @apply container mx-auto px-4 sm:px-6 max-w-4xl;
+  }
+
+  .container-wide {
+    @apply container mx-auto px-4 sm:px-6 max-w-6xl;
+  }
+
+  .container-full {
+    @apply container mx-auto px-4 sm:px-6 max-w-7xl;
+  }
+}
+
+/* HTW Gradients */
+.htw-gradient {
+  background: linear-gradient(to bottom right, #003366, #1E40AF, #003366);
+}
+
+.htw-hero-gradient {
+  background: linear-gradient(to bottom right, rgba(0, 212, 255, 0.05), rgba(30, 64, 175, 0.05), rgba(0, 51, 102, 0.05));
+}
+
+/* Animation hover states */
+.animate-scroll-left:hover {
+  animation-play-state: paused;
 }
